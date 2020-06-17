@@ -4,11 +4,11 @@ let app = angular.module('app-calculator', []);
 
 app.controller('mainController', function($scope, $http){
 
-    $scope.reward = 12.5;
+    $scope.reward = 3,804.80;
     $scope.difficulty = 0;
 
-    $scope.hashingPower = 13.5;
-    $scope.machineWattage = 1200;
+    $scope.hashingPower = 0.5;
+    $scope.machineWattage = 800;
     $scope.powerCost = 0.12;
 
     $scope.bitcoin = {
@@ -29,20 +29,20 @@ app.controller('mainController', function($scope, $http){
             {value: 1000000000000, name: 'TH/s'},
 
         ],
-        selectedHashingUnit: {value: 1000000000000, name: 'TH/s'}
+        selectedHashingUnit: {value: 1000000000, name: 'GH/s'}
     };
 
-    $http.get('http://api.coindesk.com/v1/bpi/currentprice.json').then(function (response) {
+    $http.get('https://api.coingecko.com/api/v3/simple/price?ids=note-blockchain&vs_currencies=USD%2CGBP%2CEUR').then(function (response) {
 
         let cdr = response.data;
 
-        $scope.bitcoin.exchangerates.usd = parseFloat(cdr.bpi.USD.rate.replace(',',''));
-        $scope.bitcoin.exchangerates.gbp = parseFloat(cdr.bpi.GBP.rate.replace(',',''));
-        $scope.bitcoin.exchangerates.eur = parseFloat(cdr.bpi.EUR.rate.replace(',',''));
+        $scope.bitcoin.exchangerates.usd = parseFloat(cdr.note-blockchain.usd.replace(',',''));
+        $scope.bitcoin.exchangerates.gbp = parseFloat(cdr.note-blockchain.gbp.replace(',',''));
+        $scope.bitcoin.exchangerates.eur = parseFloat(cdr.note-blockchain.eur.replace(',',''));
 
     });
 
-    $http.get('https://blockchain.info/q/getdifficulty?cors=true').then(function (response) {
+    $http.get('https://blocks.notebc.space/api/getdifficulty').then(function (response) {
         $scope.difficulty = parseFloat(response.data);
     });
 
