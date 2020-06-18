@@ -36,18 +36,18 @@ app.controller('mainController', function($scope, $http){
 
         let cdr = response.data;
 
-        $scope.bitcoin.exchangerates.usd = parseFloat(cdr.note-blockchain.usd.replace(',',''));
-        $scope.bitcoin.exchangerates.gbp = parseFloat(cdr.note-blockchain.gbp.replace(',',''));
-        $scope.bitcoin.exchangerates.eur = parseFloat(cdr.note-blockchain.eur.replace(',',''));
+        $scope.bitcoin.exchangerates.usd = parseFloat(cdr['note-blockchain'].usd);
+        $scope.bitcoin.exchangerates.gbp = parseFloat(cdr['note-blockchain'].gbp);
+        $scope.bitcoin.exchangerates.eur = parseFloat(cdr['note-blockchain'].eur);
 
     });
 
-    $http.get('https://blocks.notebc.space/api/getdifficulty').then(function (response) {
+    $http.get('http://127.0.0.1:3001/api/getdifficulty').then(function (response) {
         $scope.difficulty = parseFloat(response.data);
     });
 
     $scope.getBTCPerDay_Exact = function () {
-        return 86400 / ($scope.difficulty * (Math.pow(2,48)/65535) / ($scope.hashingPower * $scope.hashingUnitOptions.selectedHashingUnit.value)) * $scope.reward;
+        return 86400 / ($scope.difficulty * (Math.pow(2,32)) / ($scope.hashingPower * $scope.hashingUnitOptions.selectedHashingUnit.value)) * $scope.reward;
     };
 
     $scope.getBTCPerDay = function () {
