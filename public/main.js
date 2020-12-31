@@ -4,7 +4,7 @@ let app = angular.module('app-calculator', []);
 
 app.controller('mainController', function($scope, $http){
 
-    $scope.reward = 3,804.80;
+    $scope.reward = 3804.80;
     $scope.difficulty = 0;
 
     $scope.hashingPower = 0.5;
@@ -42,7 +42,7 @@ app.controller('mainController', function($scope, $http){
 
     });
 
-    $http.get('http://127.0.0.1:3001/api/getdifficulty').then(function (response) {
+    $http.get('https://blocks.notebc.space/api/getdifficulty').then(function (response) {
         $scope.difficulty = parseFloat(response.data);
     });
 
