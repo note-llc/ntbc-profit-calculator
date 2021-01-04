@@ -1,141 +1,295 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-  <script src="main.js"></script>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profit Calculator mining NTBC | NoteBlockchain</title>
+    <!-- Reference default Bulma CSS -->
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
-
     <div ng-app="app-calculator" ng-controller="mainController" ng-cloak>
+        <!-- Nav Bar -->
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="https://profit.notebc.space">
+                        <img src="img/icon.png" height="50">
+                    </a>
 
-        <div class="text-center" style="margin: 3em">
-            <img style="max-height: 100px; max-width: 100%;" id="logo" src="img/icon.png">
-            <h2>Profit Calculator</h2>
-        </div>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
 
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item">
+                            Home
+                        </a>
 
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10 text-center">
-                <form id="main-form" style="padding: 2em;" class="form-horizontal">
+                        <a class="navbar-item" target="_blank" href="https://notebc.com">
+                            NoteBC.com
+                        </a>
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-2">Hashing Power:</label>
-                        <div class="col-sm-10">
-                            <div class="input-group">
-                                <input ng-model="hashingPower" type="number" style="width: auto; display: inline-block;" class="form-control" placeholder="10">
-                                <select ng-model="hashingUnitOptions.selectedHashingUnit"
-                                        ng-options="unit.name for unit in hashingUnitOptions.availablehashingUnits track by unit.value"
-                                        style="width: auto; display: inline-block;" class="selectpicker form-control"></select>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                Links
+                            </a>
+
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item" target="_blank" href="https://twitter.com/BlockchainNote">
+                                    Twitter
+                                </a>
+                                <a class="navbar-item" target="_blank" href="https://discord.gg/Kmhf4nF">
+                                    Discord
+                                </a>
+                                <a class="navbar-item" target="_blank" href="https://www.reddit.com/r/NoteBlockchain/">
+                                    Reddit
+                                </a>
+                                <a class="navbar-item" target="_blank" href="https://github.com/note-llc/">
+                                    GitHub
+                                </a>
+                                <a class="navbar-item" target="_blank" href="https://www.notebc.com/walletsandapps">
+                                    Wallet & Apps
+                                </a>
+                                <a class="navbar-item" target="_blank" href="https://mint.notebc.space/">
+                                    Faucet
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Power Draw(w):</label>
-                        <div class="col-sm-10">
-                            <input ng-model="machineWattage" type="number" class="form-control" placeholder="1200W">
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">
+                                    Start Mining
+                                </a>
+
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item" target="_blank" href="https://mining.notebc.space">
+                                        NoteBC.space
+                                    </a>
+                                    <a class="navbar-item" target="_blank" href="https://farm.cryptocrop.net">
+                                        CryptoCrop.net
+                                    </a>
+                                    <a class="navbar-item" target="_blank" href="https://nodepow.com">
+                                        NodePOW.com
+                                    </a>
+                                    <a class="navbar-item" target="_blank" href="https://zwembad.xyz">
+                                        zwembad.xyz
+                                    </a>
+                                    <a class="navbar-item" target="_blank" href="https://zergpool.com">
+                                        Zergpool.com
+                                    </a>
+                                    <a class="navbar-item" target="_blank" href="https://zpool.ca">
+                                        Zpool.ca
+                                    </a>
+                                    <hr class="navbar-divider">
+                                    <a class="navbar-item" target="_blank" href="https://miningpoolstats.stream/noteblockchain">
+                                        Pool Stats
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </nav>
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        NoteBlockchain Profit Calculator
+                    </h1>
+                    <h2 class="subtitle">
+                        This site lets you compute the profitability of mining the crypto currency $NTBC. It estimates your
+                        daily/weekly/yearly rewards based on the current price of the coin, the global hash rate and your
+                        hashing power. Fill in the details below and see your rewards.
+                    </h2>
+                </div>
+            </div>
+        </section>
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" >Power Cost(kWh):</label>
-                        <div class="col-sm-10">
-                            <input ng-model="powerCost" type="number" class="form-control" placeholder="0.15 kWh">
+        <!-- Calculator Container -->
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-third card">
+                    <form id="main-form" style="padding: 2em;" class="form-horizontal">
+                        <label class="label is-medium">Hashing Power:</label>
+                        <div class="field is-full has-addons">
+                            <div class="control is-expanded">
+                                <input ng-model="hashingPower" type="number" class="is-medium input" placeholder="10">
+
+                            </div>
+                            <div class="control">
+                                <select ng-model="hashingUnitOptions.selectedHashingUnit"
+                                        ng-options="unit.name for unit in hashingUnitOptions.availablehashingUnits track by unit.value"
+                                        style="width: auto; display: inline-block;" class="select is-medium"></select>
+                            </div>
                         </div>
+                        <p class="help">Choose your hashing power</p>
+
+                        <div class="field is-full">
+                            <label class="label is-medium" >Power Draw (Watts):</label>
+                            <div class="control is-expanded">
+                                <input ng-model="machineWattage" type="number" class="is-medium input" placeholder="1200W">
+                            </div>
+                            <p class="help">Enter the watts consumed by the miner</p>
+                        </div>
+
+                        <div class="field is-full">
+                            <label class="label is-medium" >Power Cost(kWh):</label>
+                            <div class="control is-expanded">
+                                <input ng-model="powerCost" type="number" class="is-medium input" placeholder="0.15 kWh">
+                            </div>
+                            <p class="help">Enter the cost of 1 unit (kWh) of electricity</p>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="column is-two-thirds card">
+                    <label class="label is-medium">Rewards (estimated)</label>
+                    <div class="tabs is-centered is-fullwidth" id="rewards">
+                        <ul>
+                            <li class="is-active" data-tab="1">
+                                <a>
+                                    <span>Daily</span>
+                                </a>
+                            </li>
+                            <li data-tab="2">
+                                <a>
+                                    <span>Weekly</span>
+                                </a>
+                            </li>
+                            <li data-tab="3">
+                                <a>
+                                    <span>Monthly</span>
+                                </a>
+                            </li>
+                            <li data-tab="4">
+                                <a>
+                                    <span>Yearly</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-
-                </form>
+                    <div id="reward-content" class="is-fullwidth">
+                        <table id="daily-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth is-active" data-content="1">
+                            <tr>
+                                <th>NTBC</th>
+                                <th>USD</th>
+                                <th>GBP</th>
+                                <th>EUR</th>
+                                <th>Power Cost</th>
+                                <th>Profit</th>
+                            </tr>
+                            <tr>
+                                <td>&#7482; {{getBTCPerDay()}}</td>
+                                <td>$ {{getUSDPerDay()}}</td>
+                                <td>$ {{getGBPPerDay()}}</td>
+                                <td>$ {{getEURPerDay()}}</td>
+                                <td>$ {{getPowerCostPerDay()}}</td>
+                                <td>$ {{getProfitPerDay()}}</td>
+                            </tr>
+                        </table>
+                        <table id="weekly-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" data-content="2">
+                            <tr>
+                                <th>NTBC</th>
+                                <th>USD</th>
+                                <th>GBP</th>
+                                <th>EUR</th>
+                                <th>Power Cost</th>
+                                <th>Profit</th>
+                            </tr>
+                            <tr>
+                                <td>&#7482; {{(getBTCPerDay() * 7).toFixed(2)}}</td>
+                                <td>$ {{(getUSDPerDay() * 7).toFixed(2)}}</td>
+                                <td>$ {{(getGBPPerDay() * 7).toFixed(2)}}</td>
+                                <td>$ {{(getEURPerDay() * 7).toFixed(2)}}</td>
+                                <td>$ {{(getPowerCostPerDay() * 7).toFixed(2)}}</td>
+                                <td>$ {{(getProfitPerDay() * 7).toFixed(2)}}</td>
+                            </tr>
+                        </table>
+                        <table id="monthly-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" data-content="3">
+                            <tr>
+                                <th>NTBC</th>
+                                <th>USD</th>
+                                <th>GBP</th>
+                                <th>EUR</th>
+                                <th>Power Cost</th>
+                                <th>Profit</th>
+                            </tr>
+                            <tr>
+                                <td>&#7482; {{(getBTCPerDay() * 30).toFixed(2)}}</td>
+                                <td>$ {{(getUSDPerDay() * 30).toFixed(2)}}</td>
+                                <td>$ {{(getGBPPerDay() * 30).toFixed(2)}}</td>
+                                <td>$ {{(getEURPerDay() * 30).toFixed(2)}}</td>
+                                <td>$ {{(getPowerCostPerDay() * 30).toFixed(2)}}</td>
+                                <td>$ {{(getProfitPerDay() * 30).toFixed(2)}}</td>
+                            </tr>
+                        </table>
+                        <table id="yearly-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" data-content="4">
+                            <tr>
+                                <th>NTBC</th>
+                                <th>USD</th>
+                                <th>GBP</th>
+                                <th>EUR</th>
+                                <th>Power Cost</th>
+                                <th>Profit</th>
+                            </tr>
+                            <tr>
+                                <td>&#7482; {{(getBTCPerDay() * 365).toFixed(2)}}</td>
+                                <td>$ {{(getUSDPerDay() * 365).toFixed(2)}}</td>
+                                <td>$ {{(getGBPPerDay() * 365).toFixed(2)}}</td>
+                                <td>$ {{(getEURPerDay() * 365).toFixed(2)}}</td>
+                                <td>$ {{(getPowerCostPerDay() * 365).toFixed(2)}}</td>
+                                <td>$ {{(getProfitPerDay() * 365).toFixed(2)}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-1"></div>
         </div>
+        <!-- End Calculator Container -->
 
-        <br />
-        <br />
-
-
-        <div class="row">
-            <!--<div class="col-sm-1"></div>-->
-            <div class="col-sm-12">
-                <table id="main-table" style="margin-left: auto; margin-right: auto;width: 100%;" class="table table-bordered table-striped">
-                <tr>
-                    <th>Profit</th>
-                    <th>NTBC</th>
-                    <th>USD</th>
-                    <th>GBP</th>
-                    <th>EUR</th>
-                    <th>Power Cost</th>
-                    <th>Profit</th>
-                </tr>
-                <tr>
-                    <td>Per Day</td>
-                    <td>&#7482; {{getBTCPerDay()}}</td>
-                    <td>$ {{getUSDPerDay()}}</td>
-                    <td>$ {{getGBPPerDay()}}</td>
-                    <td>$ {{getEURPerDay()}}</td>
-                    <td>$ {{getPowerCostPerDay()}}</td>
-                    <td>$ {{getProfitPerDay()}}</td>
-                </tr>
-                <tr>
-                    <td>Per Week</td>
-                    <td>&#7482; {{(getBTCPerDay() * 7).toPrecision(2)}}</td>
-                    <td>$ {{(getUSDPerDay() * 7).toFixed(2)}}</td>
-                    <td>$ {{(getGBPPerDay() * 7).toFixed(2)}}</td>
-                    <td>$ {{(getEURPerDay() * 7).toFixed(2)}}</td>
-                    <td>$ {{(getPowerCostPerDay() * 7).toFixed(2)}}</td>
-                    <td>$ {{(getProfitPerDay() * 7).toFixed(2)}}</td>
-                </tr>
-                <tr>
-                    <td>Per Month</td>
-                    <td>&#7482; {{(getBTCPerDay() * 30).toPrecision(2)}}</td>
-                    <td>$ {{(getUSDPerDay() * 30).toFixed(2)}}</td>
-                    <td>$ {{(getGBPPerDay() * 30).toFixed(2)}}</td>
-                    <td>$ {{(getEURPerDay() * 30).toFixed(2)}}</td>
-                    <td>$ {{(getPowerCostPerDay() * 30).toFixed(2)}}</td>
-                    <td>$ {{(getProfitPerDay() * 30).toFixed(2)}}</td>
-                </tr>
-                <tr>
-                    <td>Per Year</td>
-                    <td>&#7482; {{(getBTCPerDay() * 365).toPrecision(2)}}</td>
-                    <td>$ {{(getUSDPerDay() * 365).toFixed(2)}}</td>
-                    <td>$ {{(getGBPPerDay() * 365).toFixed(2)}}</td>
-                    <td>$ {{(getEURPerDay() * 365).toFixed(2)}}</td>
-                    <td>$ {{(getPowerCostPerDay() * 365).toFixed(2)}}</td>
-                    <td>$ {{(getProfitPerDay() * 365).toFixed(2)}}</td>
-                </tr>
-            </table>
-            </div>
-            <!--<div class="col-sm-1"></div>-->
-        </div>
-
-        <br />
-        <br />
-
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10 text-center">
-                <p style="max-width: 100%;">DISCLAIMER: This data is based upon exchange rate data from
+        <!-- Disclaimer -->
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <strong>Disclaimer:</strong> This data is based upon exchange rate data from
                     <a href="https://www.coingecko.com/en/coins/note-blockchain" target="_blank">coingecko.com</a> & network data from
-                    <a href="https://blocks.notebc.space/" target="_blank">blocks.notebc.space</a>. This information is also
-                    based off a 3,804.80 NTBC block reward which decreases every year.</a>.</p>
+                    <a href="https://blocks.notebc.space/" target="_blank">blocks.notebc.space</a>. As hash rate changes over time,
+                    your rewards might increase or decrease from the numbers provided. This information is also
+                    based off a 3,804.80 NTBC block reward which decreases every year (~.
+                </div>
             </div>
-            <div class="col-sm-1"></div>
-        </div>
+        </section>
 
+        <!-- Scripts -->
 
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#rewards li').on('click', function() {
+                    var tab = $(this).data('tab');
 
+                    $('#rewards li').removeClass('is-active');
+                    $(this).addClass('is-active');
+
+                    $('#reward-content table').removeClass('is-active');
+                    $('table[data-content="' + tab + '"]').addClass('is-active');
+                });
+            });
+        </script>
     </div>
-
-
 </body>
 </html>
