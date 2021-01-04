@@ -1,0 +1,21 @@
+/* TeXGyreAdventor */
+@font-face {
+    font-family: 'TeXGyreAdventor';
+    src: url('../fonts/TeXGyreAdventor-Regular.eot');
+    src: url('../fonts/TeXGyreAdventor-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/TeXGyreAdventor-Regular.woff2') format('woff2'),
+    url('../fonts/TeXGyreAdventor-Regular.woff') format('woff'),
+    url('../fonts/TeXGyreAdventor-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Fira Code */
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url('../fonts/FiraCode-Regular.woff2') format('woff2'),
+    url('../fonts/FiraCode-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

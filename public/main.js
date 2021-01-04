@@ -49,10 +49,15 @@ app.controller('mainController', function($scope, $http){
     $scope.getBTCPerDay_Exact = function () {
         return 86400 / ($scope.difficulty * (Math.pow(2,32)) / ($scope.hashingPower * $scope.hashingUnitOptions.selectedHashingUnit.value)) * $scope.reward;
     };
-
+    // Use precision when returns are less than zero.
     $scope.getBTCPerDay = function () {
         let temp = $scope.getBTCPerDay_Exact();
-        return temp.toPrecision(2);
+        if (temp < 0) {
+            return temp.toPrecision(2);
+        }
+        else {
+            return temp.toFixed(2);
+        }
     };
 
     $scope.getUSDPerDay = function () {
