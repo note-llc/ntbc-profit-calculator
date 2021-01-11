@@ -46,9 +46,15 @@ app.controller('mainController', function($scope, $http){
         $scope.difficulty = parseFloat(response.data);
     });
 
+    // Get current Network Hashps
+    $http.get('https://blocks.notebc.space/api/getnetworkhashps').then(function (response) {
+        $scope.globalhashps = parseInt(response.data);
+    });
+
     $scope.getBTCPerDay_Exact = function () {
         return 86400 / ($scope.difficulty * (Math.pow(2,32)) / ($scope.hashingPower * $scope.hashingUnitOptions.selectedHashingUnit.value)) * $scope.reward;
     };
+
     // Use precision when returns are less than zero.
     $scope.getBTCPerDay = function () {
         let temp = $scope.getBTCPerDay_Exact();
@@ -87,5 +93,32 @@ app.controller('mainController', function($scope, $http){
         let temp = $scope.getUSDPerDay() - $scope.getPowerCostPerDay();
         return temp.toFixed(2);
     };
+
+    // Additional Functions added
+    // Current Global network Hash/s
+    $scope.getGlobalHashps = function () {
+        let temp = $scope.globalhashps;
+        let hunit = " H/s";
+        if (temp > 1000000000000) {
+            temp = temp / 1000000000000;
+            hunit = " TH/s";             
+        } else if (temp > 1000000000) {
+            temp = temp / 1000000000;
+            hunit = " GH/s";
+        } else if (temp > 1000000) {
+            temp = temp / 1000000;
+            hunit = " MH/s";
+        } else if (temp > 1000) {
+            temp = temp / 1000;
+            hunit = " KH/s";
+        } 
+        temp = temp.toFixed(2);
+        return temp + hunit;
+    }
+    // Current difficulty
+    $scope.getDifficulty = function () {
+        let temp = $scope.difficulty.toFixed(4);
+        return temp;
+    }
 
 });
