@@ -57,10 +57,14 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* Tabs & Tables */
-#reward-content table {
+#reward-content .columns {
     display: none;
 }
 
-#reward-content table.is-active {
+#reward-content .columns.is-active {
     display: block;
+}
+
+.has-background-note-light {
+    background-color: #F5E8C2;
 }

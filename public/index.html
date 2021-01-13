@@ -184,78 +184,110 @@
                         </ul>
                     </div>
                     <div id="reward-content" class="is-fullwidth">
-                        <table id="daily-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth is-active" data-content="1">
-                            <tr>
-                                <th>NTBC</th>
-                                <th>USD</th>
-                                <th>GBP</th>
-                                <th>EUR</th>
-                                <th>Power Cost</th>
-                                <th>Profit</th>
-                            </tr>
-                            <tr>
-                                <td>&#7482; {{getBTCPerDay()}}</td>
-                                <td>$ {{getUSDPerDay()}}</td>
-                                <td>$ {{getGBPPerDay()}}</td>
-                                <td>$ {{getEURPerDay()}}</td>
-                                <td>$ {{getPowerCostPerDay()}}</td>
-                                <td>$ {{getProfitPerDay()}}</td>
-                            </tr>
-                        </table>
-                        <table id="weekly-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" data-content="2">
-                            <tr>
-                                <th>NTBC</th>
-                                <th>USD</th>
-                                <th>GBP</th>
-                                <th>EUR</th>
-                                <th>Power Cost</th>
-                                <th>Profit</th>
-                            </tr>
-                            <tr>
-                                <td>&#7482; {{(getBTCPerDay() * 7).toFixed(2)}}</td>
-                                <td>$ {{(getUSDPerDay() * 7).toFixed(2)}}</td>
-                                <td>$ {{(getGBPPerDay() * 7).toFixed(2)}}</td>
-                                <td>$ {{(getEURPerDay() * 7).toFixed(2)}}</td>
-                                <td>$ {{(getPowerCostPerDay() * 7).toFixed(2)}}</td>
-                                <td>$ {{(getProfitPerDay() * 7).toFixed(2)}}</td>
-                            </tr>
-                        </table>
-                        <table id="monthly-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" data-content="3">
-                            <tr>
-                                <th>NTBC</th>
-                                <th>USD</th>
-                                <th>GBP</th>
-                                <th>EUR</th>
-                                <th>Power Cost</th>
-                                <th>Profit</th>
-                            </tr>
-                            <tr>
-                                <td>&#7482; {{(getBTCPerDay() * 30).toFixed(2)}}</td>
-                                <td>$ {{(getUSDPerDay() * 30).toFixed(2)}}</td>
-                                <td>$ {{(getGBPPerDay() * 30).toFixed(2)}}</td>
-                                <td>$ {{(getEURPerDay() * 30).toFixed(2)}}</td>
-                                <td>$ {{(getPowerCostPerDay() * 30).toFixed(2)}}</td>
-                                <td>$ {{(getProfitPerDay() * 30).toFixed(2)}}</td>
-                            </tr>
-                        </table>
-                        <table id="yearly-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" data-content="4">
-                            <tr>
-                                <th>NTBC</th>
-                                <th>USD</th>
-                                <th>GBP</th>
-                                <th>EUR</th>
-                                <th>Power Cost</th>
-                                <th>Profit</th>
-                            </tr>
-                            <tr>
-                                <td>&#7482; {{(getBTCPerDay() * 365).toFixed(2)}}</td>
-                                <td>$ {{(getUSDPerDay() * 365).toFixed(2)}}</td>
-                                <td>$ {{(getGBPPerDay() * 365).toFixed(2)}}</td>
-                                <td>$ {{(getEURPerDay() * 365).toFixed(2)}}</td>
-                                <td>$ {{(getPowerCostPerDay() * 365).toFixed(2)}}</td>
-                                <td>$ {{(getProfitPerDay() * 365).toFixed(2)}}</td>
-                            </tr>
-                        </table>
+                        <div id="daily-table" class="columns is-active is-gapless is-mobile is-centered" data-content="1">
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>NTBC</strong></div>
+                                <div class="p-1 has-text-centered">&#7482; {{getBTCPerDay()}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>USD</strong></div>
+                                <div class="p-1 has-text-centered">$ {{getUSDPerDay()}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>GBP</strong></div>
+                                <div class="p-1 has-text-centered">£ {{getGBPPerDay()}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>EUR</strong></div>
+                                <div class="p-1 has-text-centered">€ {{getEURPerDay()}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>Power Cost</strong></div>
+                                <div class="p-1 has-text-centered">$ {{getPowerCostPerDay()}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>Profit</strong></div>
+                                <div class="p-1 has-text-centered">$ {{getProfitPerDay()}}</div>
+                            </div>
+                        </div>
+                        <div id="weekly-table" class="columns is-gapless is-mobile is-centered" data-content="2">
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>NTBC</strong></div>
+                                <div class="p-1 has-text-centered">&#7482; {{(getBTCPerDay() * 7).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>USD</strong></div>
+                                <div class="p-1 has-text-centered">$ {{(getUSDPerDay() * 7).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>GBP</strong></div>
+                                <div class="p-1 has-text-centered">£ {{(getGBPPerDay() * 7).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>EUR</strong></div>
+                                <div class="p-1 has-text-centered">€ {{(getEURPerDay() * 7).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>Power Cost</strong></div>
+                                <div class="p-1 has-text-centered">$ {{(getPowerCostPerDay() * 7).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>Profit</strong></div>
+                                <div class="p-1 has-text-centered">$ {{(getProfitPerDay() * 7).toFixed(2)}}</div>
+                            </div>
+                        </div>
+                        <div id="monthly-table" class="columns is-gapless is-mobile is-centered" data-content="3">
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>NTBC</strong></div>
+                                <div class="p-1 has-text-centered">&#7482; {{(getBTCPerDay() * 30).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>USD</strong></div>
+                                <div class="p-1 has-text-centered">$ {{(getUSDPerDay() * 30).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>GBP</strong></div>
+                                <div class="p-1 has-text-centered">£ {{(getGBPPerDay() * 30).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>EUR</strong></div>
+                                <div class="p-1 has-text-centered">€ {{(getEURPerDay() * 30).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>Power Cost</strong></div>
+                                <div class="p-1 has-text-centered">$ {{(getPowerCostPerDay() * 30).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>Profit</strong></div>
+                                <div class="p-1 has-text-centered">$ {{(getProfitPerDay() * 30).toFixed(2)}}</div>
+                            </div>
+                        </div>
+                        <div id="yearly-table" class="columns is-gapless is-mobile is-centered" data-content="4">
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>NTBC</strong></div>
+                                <div class="p-1 has-text-centered">&#7482; {{(getBTCPerDay() * 365).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>USD</strong></div>
+                                <div class="p-1 has-text-centered">$ {{(getUSDPerDay() * 365).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>GBP</strong></div>
+                                <div class="p-1 has-text-centered">£ {{(getGBPPerDay() * 365).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>EUR</strong></div>
+                                <div class="p-1 has-text-centered">€ {{(getEURPerDay() * 365).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>Power Cost</strong></div>
+                                <div class="p-1 has-text-centered">$ {{(getPowerCostPerDay() * 365).toFixed(2)}}</div>
+                            </div>
+                            <div class="column is-half is-offset-one-quarter">
+                                <div class="has-background-note-light p-1 has-text-centered"><strong>Profit</strong></div>
+                                <div class="p-1 has-text-centered">$ {{(getProfitPerDay() * 365).toFixed(2)}}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -266,10 +298,10 @@
         <section class="section">
             <div class="container pt-5">
                 <div class="columns">
-                    <div class="card is-fullwidth column">
+                    <div class="card is-fullwidth column has-background-note-light">
                         <h2 class="is-size-3 has-text-centered mb-0">Current Stats</h2>
                         <hr>
-                        <table class="table">
+                        <table class="table is-fullwidth">
                             <tr>
                                 <th>Global Hash ps</th>
                                 <td>{{getGlobalHashps()}}</td>
@@ -285,6 +317,37 @@
         </section>
         <!-- End Current Data Cards -->
 
+        <!-- Pool hash information -->
+        <section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div class="card is-fullwidth column">
+                        <h2 class="is-size-3 has-text-centered mb-0">Pool Details</h2>
+                        <p class="mb-2">Blockchain networks are made more secure by distributed mining. Ideally, no pool should have more
+                        than 50% of the total network hash rate. While it may be tempting to mine to a pool with high hashrate,
+                            you will get a higher share of the rewards when you contribute to a lower hashrate pool.</p>
+                        <table class="table is-fullwidth">
+                            <tr>
+                                <th width="15%">NoteBC.Space</th>
+                                <td width="15%">{{hashnotebcspace()}}</td>
+                                <td width="45%"><progress class="progress is-primary" value="{{percnotebcspace()}}" max="100"></progress></td>
+                                <td width="10%">{{percnotebcspace()}}%</td>
+                                <td width="15%"><a href="https://mining.notebc.space" target="_blank" class="button has-background-primary has-text-weight-bold">Go!</a></td>
+                            </tr>
+                            <tr>
+                                <th width="15%">CryptoCrop.net</th>
+                                <td width="15%">{{hashcryptocrop()}}</td>
+                                <td width="45%"><progress class="progress is-primary" value="{{perccryptocrop()}}" max="100"></progress></td>
+                                <td width="10%">{{perccryptocrop()}}%</td>
+                                <td width="15%"><a href="https://farm.cryptocrop.net" target="_blank" class="button has-background-primary has-text-weight-bold">Go!</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Pool hash information -->
+
         <!-- Disclaimer -->
         <section class="hero">
             <div class="hero-body">
@@ -293,7 +356,7 @@
                     <a href="https://www.coingecko.com/en/coins/note-blockchain" target="_blank">coingecko.com</a> & network data from
                     <a href="https://blocks.notebc.space/" target="_blank">blocks.notebc.space</a>. As hash rate changes over time,
                     your rewards might increase or decrease from the numbers provided. This information is also
-                    based off a 3,804.80 NTBC block reward which decreases every year (~.
+                    based off a 3,804.80 NTBC block reward which decreases every year (~1,051,200 blocks).
                 </div>
             </div>
         </section>
@@ -308,8 +371,8 @@
                     $('#rewards li').removeClass('is-active');
                     $(this).addClass('is-active');
 
-                    $('#reward-content table').removeClass('is-active');
-                    $('table[data-content="' + tab + '"]').addClass('is-active');
+                    $('#reward-content div').removeClass('is-active');
+                    $('div[data-content="' + tab + '"]').addClass('is-active');
                 });
             });
         </script>

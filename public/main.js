@@ -51,6 +51,17 @@ app.controller('mainController', function($scope, $http){
         $scope.globalhashps = parseInt(response.data);
     });
 
+    // Get pool HashPS
+    $http.get('https://cors-anywhere.herokuapp.com/https://mining.notebc.space/api/currencies').then(function (reponse) {
+        let cdr = reponse.data;
+        $scope.ntbcspacehash = parseInt(cdr['NTBC'].hashrate);
+    });
+
+    $http.get('https://cors-anywhere.herokuapp.com/http://farm.cryptocrop.net/api/currencies').then(function (reponse) {
+        let cdr = reponse.data;
+        $scope.cryptocrophash = parseInt(cdr['ntbc'].hashrate);
+    });
+
     $scope.getBTCPerDay_Exact = function () {
         return 86400 / ($scope.difficulty * (Math.pow(2,32)) / ($scope.hashingPower * $scope.hashingUnitOptions.selectedHashingUnit.value)) * $scope.reward;
     };
@@ -95,13 +106,12 @@ app.controller('mainController', function($scope, $http){
     };
 
     // Additional Functions added
-    // Current Global network Hash/s
-    $scope.getGlobalHashps = function () {
-        let temp = $scope.globalhashps;
+    $scope.hashtohuman = function($hashrate) {
         let hunit = " H/s";
+        let temp = $hashrate;
         if (temp > 1000000000000) {
             temp = temp / 1000000000000;
-            hunit = " TH/s";             
+            hunit = " TH/s";
         } else if (temp > 1000000000) {
             temp = temp / 1000000000;
             hunit = " GH/s";
@@ -111,9 +121,14 @@ app.controller('mainController', function($scope, $http){
         } else if (temp > 1000) {
             temp = temp / 1000;
             hunit = " KH/s";
-        } 
+        }
         temp = temp.toFixed(2);
         return temp + hunit;
+    }
+    // Current Global network Hash/s
+    $scope.getGlobalHashps = function () {
+        let temp = $scope.hashtohuman($scope.globalhashps);
+        return temp;
     }
     // Current difficulty
     $scope.getDifficulty = function () {
@@ -121,4 +136,29 @@ app.controller('mainController', function($scope, $http){
         return temp;
     }
 
+    // Pool Hashps
+    $scope.hashnotebcspace = function() {
+        let temp = $scope.hashtohuman($scope.ntbcspacehash);
+        return temp;
+    }
+    $scope.percnotebcspace = function() {
+        let temp = 100 * ($scope.ntbcspacehash/$scope.globalhashps);
+        return temp.toFixed(2);
+    }
+    $scope.hashcryptocrop = function() {
+        let temp = $scope.hashtohuman($scope.cryptocrophash);
+        return temp;
+    }
+    $scope.perccryptocrop = function() {
+        let temp = 100 * ($scope.cryptocrophash/$scope.globalhashps);
+        return temp.toFixed(2);
+    }
+    // Rejected code
+    $scope.hashnotebcspacev1 = function() {
+        //let temp =
+        let temp = '<td>' + $scope.hashtohuman($scope.ntbcspacehash); + '</td>';
+        let perce = 100 * ($scope.ntbcspacehash/$scope.globalhashps);
+        temp += '<td><progress class="progress is-primary" value="'+ perce.toFixed(0) +'" max="100">' + perce.toFixed(2) + '%</progress></td>';
+        return temp;
+    }
 });
