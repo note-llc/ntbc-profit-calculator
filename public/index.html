@@ -138,22 +138,48 @@
                             </div>
                         </div>
                         <p class="help">Choose your hashing power</p>
-
-                        <div class="field is-full">
-                            <label class="label is-medium" >Power Draw (Watts):</label>
-                            <div class="control is-expanded">
-                                <input ng-model="machineWattage" type="number" class="is-medium input" placeholder="1200W">
+                        <div class="tabs is-centered is-fullwidth" id="hashway">
+                            <ul>
+                                <li class="is-active" data-tab="1">
+                                    <a>
+                                        <span>Own Setup</span>
+                                    </a>
+                                </li>
+                                <li data-tab="2">
+                                    <a>
+                                        <span>Renting Hash</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="hashway-content" class="is-fullwidth">
+                            <div id="ownsetup" class="content is-active" hash-content="1">
+                                <div class="field is-full">
+                                    <label class="label is-medium" >Power Draw (Watts):</label>
+                                    <div class="control is-expanded">
+                                        <input ng-model="machineWattage" type="number" class="is-medium input" placeholder="1200W">
+                                    </div>
+                                    <p class="help">Enter the watts consumed by the miner</p>
+                                </div>
+                                <div class="field is-full">
+                                    <label class="label is-medium" >Power Cost(kWh):</label>
+                                    <div class="control is-expanded">
+                                        <input ng-model="powerCost" type="number" class="is-medium input" placeholder="0.15 kWh">
+                                    </div>
+                                    <p class="help">Enter the cost of 1 unit (kWh) of electricity</p>
+                                </div>
                             </div>
-                            <p class="help">Enter the watts consumed by the miner</p>
+                            <div id="rentals" hash-content="2" class="content">
+                                <div class="field is-full">
+                                    <label class="label is-medium" >Rental costs (BTC):</label>
+                                    <div class="control is-expanded">
+                                        <input type="number" class="is-medium input" placeholder="0.00001">
+                                    </div>
+                                    <p class="help">Enter your total BTC for the rental</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="field is-full">
-                            <label class="label is-medium" >Power Cost(kWh):</label>
-                            <div class="control is-expanded">
-                                <input ng-model="powerCost" type="number" class="is-medium input" placeholder="0.15 kWh">
-                            </div>
-                            <p class="help">Enter the cost of 1 unit (kWh) of electricity</p>
-                        </div>
 
                     </form>
                 </div>
@@ -373,6 +399,17 @@
 
                     $('#reward-content div').removeClass('is-active');
                     $('div[data-content="' + tab + '"]').addClass('is-active');
+                });
+            });
+            $(document).ready(function() {
+                $('#hashway li').on('click', function() {
+                    var tab = $(this).data('tab');
+
+                    $('#hashway li').removeClass('is-active');
+                    $(this).addClass('is-active');
+
+                    $('#hashway-content div').removeClass('is-active');
+                    $('div[hash-content="' + tab + '"]').addClass('is-active');
                 });
             });
         </script>
