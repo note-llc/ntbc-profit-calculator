@@ -56,10 +56,13 @@ app.controller('mainController', function($scope, $http){
         let cdr = reponse.data;
         $scope.ntbcspacehash = parseInt(cdr['NTBC'].hashrate);
     });
-
     $http.get('https://cors-anywhere.herokuapp.com/http://farm.cryptocrop.net/api/currencies').then(function (reponse) {
         let cdr = reponse.data;
         $scope.cryptocrophash = parseInt(cdr['ntbc'].hashrate);
+    });
+    $http.get('https://cors-anywhere.herokuapp.com/http://api.zergpool.com:8080/api/currencies').then(function (reponse) {
+        let cdr = reponse.data;
+        $scope.zergpoolhash = parseInt(cdr['NTBC'].hashrate);
     });
 
     $scope.getBTCPerDay_Exact = function () {
@@ -124,35 +127,43 @@ app.controller('mainController', function($scope, $http){
         }
         temp = temp.toFixed(2);
         return temp + hunit;
-    }
+    };
     // Current Global network Hash/s
     $scope.getGlobalHashps = function () {
         let temp = $scope.hashtohuman($scope.globalhashps);
         return temp;
-    }
+    };
     // Current difficulty
     $scope.getDifficulty = function () {
         let temp = $scope.difficulty.toFixed(4);
         return temp;
-    }
+    };
 
     // Pool Hashps
     $scope.hashnotebcspace = function() {
         let temp = $scope.hashtohuman($scope.ntbcspacehash);
         return temp;
-    }
+    };
     $scope.percnotebcspace = function() {
         let temp = 100 * ($scope.ntbcspacehash/$scope.globalhashps);
         return temp.toFixed(2);
-    }
+    };
     $scope.hashcryptocrop = function() {
         let temp = $scope.hashtohuman($scope.cryptocrophash);
         return temp;
-    }
+    };
     $scope.perccryptocrop = function() {
         let temp = 100 * ($scope.cryptocrophash/$scope.globalhashps);
         return temp.toFixed(2);
-    }
+    };
+    $scope.hashzergpool = function () {
+        let temp = $scope.hashtohuman($scope.zergpoolhash);
+        return temp;
+    };
+    $scope.perczergpool = function () {
+        let temp = 100 * ($scope.zergpoolhash/$scope.globalhashps);
+        return temp.toFixed(2);
+    };
     // Rejected code
     $scope.hashnotebcspacev1 = function() {
         //let temp =
@@ -160,5 +171,5 @@ app.controller('mainController', function($scope, $http){
         let perce = 100 * ($scope.ntbcspacehash/$scope.globalhashps);
         temp += '<td><progress class="progress is-primary" value="'+ perce.toFixed(0) +'" max="100">' + perce.toFixed(2) + '%</progress></td>';
         return temp;
-    }
+    };
 });
